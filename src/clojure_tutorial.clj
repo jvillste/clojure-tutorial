@@ -24,7 +24,7 @@ bar"
 
 :foo
 
-:bar
+::bar ; this equals :clojure-tutorial/bar
 
 :foo.bar/foobar
 
@@ -59,6 +59,48 @@ bar"
 #{:foo :bar}
 #{1 2 3 :foo "bar"}
 
+
+;; booleans
+
+;true
+;false
+
+;; null, nil
+
+;nil
+
+
+;; equality
+
+(= 1 1)
+
+(= nil false)
+
+(= :foo :foo :foo)
+
+(= 1 1 1 2)
+
+
+
+;; add numbers
+
+(+ 3 2)
+
+(+ 3 2 3 4)
+
+
+;; substract numbers
+
+(- 1 1 1)
+
+
+;; increment a number
+;; http://clojuredocs.org/clojure_core/clojure.core/inc
+
+(inc 1)
+
+
+;; condition
 
 ;; apply function to each item in a collection and return a list of results
 
