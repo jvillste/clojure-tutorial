@@ -60,7 +60,7 @@ bar"
 #{1 2 3 :foo "bar"}
 
 
-
+;; apply function to each item in a collection and return a list of results
 
 (map inc [1 2 3])
 
