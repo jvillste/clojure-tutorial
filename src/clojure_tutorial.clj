@@ -70,7 +70,8 @@ bar"
 ;nil
 
 
-;; equality
+;; test equality
+;; http://clojuredocs.org/clojure_core/clojure.core/=
 
 (= 1 1)
 
@@ -79,7 +80,6 @@ bar"
 (= :foo :foo :foo)
 
 (= 1 1 1 2)
-
 
 
 ;; add numbers
@@ -95,14 +95,82 @@ bar"
 
 
 ;; increment a number
-;; http://clojuredocs.org/clojure_core/clojure.core/inc
 
 (inc 1)
 
+;; create a string
+(str 1 2)
 
-;; condition
+(str 1 " " :foo)
+
+(str [:foo :bar] " " {:foo :bar})
+
+
+;; if is a function
+
+(if true :foo :bar)
+
+(if false :foo :bar)
+
+(if nil :foo :bar) ; nil is false
+
+(if 4 :bar :foobar) ; everything else is true
+
+
+;; select one based on a value
+
+(case :foo
+  :foobar 3
+  :foo 1
+  :bar 2)
+
+
+;; select one based on a condition
+
+(cond
+ (= 1 2) :foo
+ (= 1 1) :bar
+ :default :foobar)
+
 
 ;; apply function to each item in a collection and return a list of results
 
 (map inc [1 2 3])
+
+
+;; a function
+
+(fn [x] (+ x 1))
+
+((fn [x] (+ x 1)) 1)
+
+(fn [x y] (+ x y))
+
+;; reduce applies a function to the first and second values and then to the result and the third value etc.
+
+(reduce + [1 2 3])
+
+
+(reduce (fn [x y] (str x "," y))
+        ["a" "b" "c"])
+
+
+;; define a symbol
+
+(def x 1)
+
+
+;; define a functin
+
+(def my-add (fn [x y] (+ x y)))
+
+(defn my-add2 [x y]
+  (+ x y))
+
+(my-add2 1 2)
+
+
+
+
+
 
