@@ -62,12 +62,12 @@ bar"
 
 ;; booleans
 
-;true
-;false
+                                        ;true
+                                        ;false
 
 ;; null, nil
 
-;nil
+                                        ;nil
 
 
 ;; test equality
@@ -98,7 +98,9 @@ bar"
 
 (inc 1)
 
+
 ;; create a string
+
 (str 1 2)
 
 (str 1 " " :foo)
@@ -146,6 +148,14 @@ bar"
 
 (fn [x y] (+ x y))
 
+
+;; a function
+
+#(+ %1 %2)
+
+#(inc %)
+
+
 ;; reduce applies a function to the first and second values and then to the result and the third value etc.
 
 (reduce + [1 2 3])
@@ -153,6 +163,68 @@ bar"
 
 (reduce (fn [x y] (str x "," y))
         ["a" "b" "c"])
+
+
+;; add to a collection
+
+(conj [1 2] 3)
+
+(conj '(1 2) 3)
+
+(conj #{1 2} 3)
+
+
+;; drop one from a sequence
+
+(rest [1 2])
+
+(rest '(1 2))
+
+;; take the first from a seuquence
+
+(first [1 2])
+
+(first '(1 2))
+
+
+;; add to a map
+
+(assoc {:foo 1}
+  :bar 2
+  :foobar 3)
+
+
+;; add to a map of maps
+
+(assoc-in {} [:foo :bar :foobar] 3)
+
+
+;; update in a map of maps
+
+(update-in {:foo 1
+            :bar {:foobar 2}}
+
+           [:bar :foobar]
+
+           inc)
+
+
+;; remove from a map
+
+(dissoc {:foo 1
+         :bar 2}
+        :bar)
+
+
+
+;; remove from a set
+
+(disj #{1 2} 2)
+
+
+;; filter a sequence
+
+(filter even? [1 2 3 4])
 
 
 ;; define a symbol
@@ -171,6 +243,25 @@ bar"
 
 
 
+;; define a protocol
+
+(defprotocol Worker
+  "Worker does work"
+  (do-work [worker work] "works")
+  (do-nothing [worker] "takes a nap"))
+
+;; define a type
+
+(defrecord MyWorker [earnings])
 
 
+;; implement a protocol
 
+(extend-type MyWorker
+  Worker
+  (do-work [worker work]
+           (update-in worker [:earnings] #(+ % work)))
+
+  (do-nothing [worker]
+              (Thread/sleep 1000)
+              worker))
