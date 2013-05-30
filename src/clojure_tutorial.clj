@@ -1,6 +1,6 @@
 ;; namespace
 
-(ns clojure-tutorial)
+;;(ns clojure-tutorial)
 
 
 ;; numbers
@@ -151,9 +151,9 @@ bar"
 
 ;; a function
 
-#(+ %1 %2)
+;; #(+ %1 %2)
 
-#(inc %)
+;; #(inc %)
 
 
 ;; reduce applies a function to the first and second values and then to the result and the third value etc.
@@ -232,7 +232,7 @@ bar"
 (def x 1)
 
 
-;; define a functin
+;; define a function
 
 (def my-add (fn [x y] (+ x y)))
 
@@ -242,8 +242,8 @@ bar"
 (my-add2 1 2)
 
 
-
-;; define a protocol
+(comment
+  ;; define a protocol
 
 (defprotocol Worker
   "Worker does work"
@@ -265,3 +265,5 @@ bar"
   (do-nothing [worker]
               (Thread/sleep 1000)
               worker))
+  )
+
