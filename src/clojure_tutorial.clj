@@ -1,6 +1,6 @@
 ;; namespace
 
-;;(ns clojure-tutorial)
+(ns clojure-tutorial)
 
 
 ;; numbers
